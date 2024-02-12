@@ -1,6 +1,6 @@
 import os
 import torch
-from app import captioning, detection
+from app import captioning, detection, classification
 from flask import Flask, send_file, request, jsonify
 
 app = Flask(__name__)
@@ -32,13 +32,13 @@ def process_images():
     results = []
     for image_path in image_paths:
         detection_results = detection.perform_detection(image_path)
-        # classification_results = classification.perform_classification(image_path)
+        classification_result = classification.perform_classification(image_path)
         captioning_results = captioning.generate_image_caption(image_path)
 
         image_result = {
             'image': image_path,
             'detection': detection_results,
-            # 'classification': classification_results,
+            'classification': classification_result,
             'captioning': captioning_results
         }
         results.append(image_result)
