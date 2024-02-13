@@ -14,19 +14,34 @@ I. Setup:
    ● Python (3.x recommended)
    ● Flask
    ● PIL (Python Imaging Library)
-   ● NumP
+   ● NumPy
 2. Clone the repository containing the Flask application:
-   git clone
+
+```
+git clone https://github.com/pratikranaa/AI-pipeline-image
+```
+
 3. Navigate to the project directory:
-   cd
+
+```
+cd AI-pipeline-image
+```
+
 4. Install the required dependencies:
-   pip install -r requirements.txt
+
+```
+pip install -r requirements.txt
+```
 
 II. Usage
 
 1. Run the Flask Application:
    To start the Flask application, execute the following command in your terminal:
+   ```
    python main.py
+
+   ```
+
    The application will start running on the default port (8000).
 2. Access the Web Interface:
    Open a web browser and navigate to http://127.0.0.1:8000/ to access the web interface.
@@ -51,6 +66,8 @@ II. Usage
    Send a POST request to /process_images endpoint with a JSON object containing base64-encoded
    images.
    Example:
+
+   ```
    {
    "Images": [
    "base64_encoded_image_1",
@@ -58,12 +75,14 @@ II. Usage
    ...
    ]
    }
+   ```
    Response:
    The endpoint will return a JSON object containing the processed results for each image.
    Example Response:
+
+   ```
    [
    {
-   "image": "image_path_1",
    "detection": {
    "objects": ["object_1", "object_2", ...]
    },
@@ -71,7 +90,6 @@ II. Usage
    "captioning": "image_caption"
    },
    {
-   "image": "image_path_2",
    "detection": {
    "objects": ["object_1", "object_2", ...]
    },
@@ -80,6 +98,7 @@ II. Usage
    },
    ...
    ]
+   ```
    IV. Conclusion
    Whether through the web interface or API endpoints, you can easily process images and obtain object
    detection, image classification, and image captioning results.
