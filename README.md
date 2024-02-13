@@ -14,7 +14,7 @@ I. Setup:
    ● Python (3.x recommended)
    ● Flask
    ● PIL (Python Imaging Library)
-   ● NumPy
+   ● NumP
 2. Clone the repository containing the Flask application:
    git clone
 3. Navigate to the project directory:
