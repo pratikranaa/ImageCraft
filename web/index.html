@@ -6,6 +6,7 @@
     <title>Upload Images</title>
 </head>
 <body>
+    <h1>Upload Image</h1>
     <input type="file" id="fileInput" accept="image/*" multiple>
     <button onclick="uploadImages()">Upload</button>
 
@@ -42,7 +43,6 @@
             .then(response => response.json())
             .then(results => {
                 console.log(results);
-                // Handle the results as needed
             })
             .catch(error => {
                 console.error('Error:', error);

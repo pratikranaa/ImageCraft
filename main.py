@@ -12,13 +12,9 @@ UPLOAD_FOLDER = 'uploads'
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
     
+    
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-# def save_uploaded_image(file):
-#     filename = file.filename
-#     filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-#     file.save(filepath)
-#     return filepath
 
 def decode_base64_image(image_data):
     image_data = image_data.split(',')[1]
@@ -35,12 +31,6 @@ def index():
 
 @app.route('/process_images', methods=['POST'])
 def process_images():
-    # data = request.files.getlist('images')
-    # image_paths = []
-    # for file in data:
-    #     filepath = save_uploaded_image(file)
-    #     image_paths.append(filepath)
-
     data = request.json.get('Images')
     results = []
     for image_data in data:
@@ -50,15 +40,12 @@ def process_images():
         captioning_results = captioning.generate_image_caption(image_path)
 
         image_result = {
-            'image': image_path,
             'detection': detection_results,
             'classification': classification_result,
             'captioning': captioning_results
         }
         results.append(image_result)
-
         os.remove(image_path)
-
     return jsonify(results)
 
 
