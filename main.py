@@ -1,5 +1,8 @@
 import os
-import torch
+import base64
+from io import BytesIO
+from PIL import Image
+import numpy as np
 from app import captioning, detection, classification
 from flask import Flask, send_file, request, jsonify
 
@@ -11,26 +14,37 @@ if not os.path.exists(UPLOAD_FOLDER):
     
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-def save_uploaded_image(file):
-    filename = file.filename
-    filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-    file.save(filepath)
-    return filepath
+# def save_uploaded_image(file):
+#     filename = file.filename
+#     filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+#     file.save(filepath)
+#     return filepath
+
+def decode_base64_image(image_data):
+    image_data = image_data.split(',')[1]
+    img_bytes = BytesIO(base64.b64decode(image_data))
+    img = Image.open(img_bytes)
+    temp_image_path = os.path.join(UPLOAD_FOLDER, 'temp_image.jpg')
+    img.save(temp_image_path)
+    return temp_image_path
 
 @app.route("/")
 def index():
     return send_file('web/index.html')
 
+
 @app.route('/process_images', methods=['POST'])
 def process_images():
-    data = request.files.getlist('images')
-    image_paths = []
-    for file in data:
-        filepath = save_uploaded_image(file)
-        image_paths.append(filepath)
+    # data = request.files.getlist('images')
+    # image_paths = []
+    # for file in data:
+    #     filepath = save_uploaded_image(file)
+    #     image_paths.append(filepath)
 
+    data = request.json.get('Images')
     results = []
-    for image_path in image_paths:
+    for image_data in data:
+        image_path = decode_base64_image(image_data)
         detection_results = detection.perform_detection(image_path)
         classification_result = classification.perform_classification(image_path)
         captioning_results = captioning.generate_image_caption(image_path)
@@ -43,8 +57,7 @@ def process_images():
         }
         results.append(image_result)
 
-        # Delete the uploaded image after processing
-        # os.remove(image_path)
+        os.remove(image_path)
 
     return jsonify(results)
 
