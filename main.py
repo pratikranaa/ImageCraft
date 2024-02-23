@@ -45,7 +45,7 @@ def process_images():
             'captioning': captioning_results
         }
         results.append(image_result)
-        os.remove(image_path)
+        # os.remove(image_path)
     return jsonify(results)
 
 
