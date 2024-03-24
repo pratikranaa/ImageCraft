@@ -1,14 +1,16 @@
 import React, { useState } from 'react'
-import Products from './Products'
 import Navbar from './Navbar';
 import Forms from './Forms';
+import Footer from './Footer';
+
+
 
 function App() {
-  var [a, b] = useState(69);
   return (
-  <div className="w-full h-screen bg-zinc-900 text-white">
-    <Navbar /> 
+  <div className="flex flex-col min-h-screen bg-gray-800">
+    <Navbar />
     <Forms/> 
+    <Footer/>
   </div> 
   )
 }

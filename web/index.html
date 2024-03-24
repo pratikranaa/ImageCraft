@@ -33,7 +33,7 @@
         
         function sendImages(images) {
             const data = { Images: images };
-            fetch('/process_images', {
+            fetch('/api/process_images', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

@@ -1,1 +1,34 @@
-.venv
+build/# Node modules and build files
+node_modules/
+
+
+# Python virtual environment
+env/
+
+# Flask instance folder
+instance/
+
+# Flask session cookie key
+.flask_secret_key
+
+# PyCharm project settings
+.idea/
+
+# VS Code settings
+.vscode/
+
+# Python compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Log files
+*.log
+
+# Environment variables
+.env
+
+# OS generated files
+.DS_Store
+Thumbs.db
