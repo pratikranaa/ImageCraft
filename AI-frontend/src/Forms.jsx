@@ -78,13 +78,12 @@ function Forms() {
   const handleLoadSomething = () => {
     if (!image) {
       alert('No image selected');
-      // or show an alert to the user
-      // alert('No image selected');
     }
   };
+
   
   return (
-        <div className="flex w-full h-screen bg-gray-800 text-white p-10">
+        <div className="flex w-full min-h-screen bg-gray-800 text-white p-10">
               <div> <LoadingBar color="blue" ref={ref} /> </div>
           <div className="w-1/2">
         <h1 className="text-3xl font-bold text-center">Upload Image</h1>
@@ -122,16 +121,22 @@ function Forms() {
               </th>
               <td className="px-6 py-4 dark:text-white">{data.classification}</td>
             </tr>
-            {data.detection.map((detection, index) => (
-              <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <th scope="row" className="px-6 py-4 dark:bg-gray-700 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  Detection No. {index + 1}
-                </th>
-                <td className="px-6 py-4 dark:text-white ">
-                  Count: {counts[detection.name]} | Object: {detection.name}
-                </td>
-              </tr>
-            ))}
+            {(() => {
+                  const uniqueDetections = [...new Set(data.detection.map(detection => detection.name))];
+                  return uniqueDetections.map((detection, index) => {
+                    const count = data.detection.filter(item => item.name === detection).length;
+                    return (
+                      <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        <th scope="row" className="px-6 py-4 dark:bg-gray-700 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                          Detection No. {index + 1}
+                        </th>
+                        <td className="px-6 py-4 dark:text-white ">
+                          Count: {count} | Object: {detection}
+                        </td>
+                      </tr>
+                    );
+                  });
+                })()}
           </>
         ) : (
           <tr>
