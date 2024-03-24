@@ -45,7 +45,7 @@ React + Flask Based AI Image processing app. The application utilises various im
 #### 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/pratikranaa/imagecraft
+   git clone https://github.com/pratikranaa/ImageCraft.git
    ```
 #### 2. Navigate to the project frontend directory:
 
@@ -108,7 +108,7 @@ To build the application for production, follow these steps:
 #### 2. Copy the frontend build to flask directory
 
    ```bash
-   cd ..
+   cd ..           #go back to main directory
    cp -r ai-frontend/dist .
    ```
 #### 3. Run the Backend
@@ -161,6 +161,10 @@ Imagecraft/
 ├── Dockerfile
 ├── requirements.txt
 ├── .env
+├── dist        # after npm run build and copying frontend build files
+│   ├── index.html
+│   ├── main.js
+│   ├── ...
 ├── ...
 ```
 
@@ -171,7 +175,7 @@ Imagecraft/
 - `Dockerfile`: Dockerfile for building the Docker image.
 - `requirements.txt`: Python dependencies.
 - `.env`: Environment variables (if any).
-
+- `dist`: Contains the built frontend files. need to copy from ai-frontend after npm run build
 
 ## 6. Configuration
 
