@@ -1,6 +1,6 @@
-# infilect-AI-pipeline
+# ImageCraft
 
-processing. The application utilises various image processing techniques such as object detection, image
+React + Flask Based AI Image processing app. The application utilises various image processing techniques such as object detection, image
 
 classification, and image captioning. We have used Mobilenetv3 for image classification because it is
 
@@ -81,7 +81,7 @@ pip install -r requirements.txt
 
    Send a POST request to /process_images endpoint with a JSON object containing base64-encoded
    images.
-   
+
 ### Example:
 
 ```
@@ -95,6 +95,7 @@ pip install -r requirements.txt
 ```
 
 ### Response:
+
    The endpoint will return a JSON object containing the processed results for each image.
    Example Response:
 
@@ -119,5 +120,6 @@ pip install -r requirements.txt
 ```
 
 ## IV. Conclusion
+
    Whether through the web interface or API endpoints, you can easily process images and obtain object
    detection, image classification, and image captioning results.
