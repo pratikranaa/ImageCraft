@@ -285,6 +285,4 @@ This project was created by:
 You can see a demo of the application in the following video:
 
 [Imagecraft Demo Video](https://github.com/pratikranaa/ImageCraft/blob/master/demo.mp4)
-https://github.com/pratikranaa/ImageCraft/assets/136930578/1b2996b2-3a0c-4083-a01d-8acf7f2db3c1
-
 
