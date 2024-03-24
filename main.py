@@ -4,7 +4,7 @@ from io import BytesIO
 from PIL import Image
 import numpy as np
 from app import captioning, detection, classification, file_delete
-from flask import Flask, send_file, request, jsonify
+from flask import Flask, send_file, request, jsonify, send_from_directory
 from flask_cors import CORS
 import shutil
 import glob
@@ -12,6 +12,14 @@ import glob
 
 
 app = Flask(__name__)
+
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def serve(path):
+    if path != "" and os.path.exists("dist/" + path):
+        return send_from_directory('dist', path)
+    else:
+        return send_from_directory('dist', 'index.html')
 
 
 # enable CORS
@@ -39,9 +47,9 @@ def decode_base64_image(image_data):
     img.save(temp_image_path)
     return temp_image_path
 
-@app.route("/")
-def index():
-    return send_file('web/index.html')
+# @app.route("/")
+# def index():
+#     return send_file('web/index.html')
 
 
 # @app.route('/api/process_images', methods=['POST', 'GET'])
@@ -139,4 +147,4 @@ def process_images():
 
 
 if __name__ == "__main__":
-    app.run(port=int(os.environ.get('PORT', 8000)))
+     app.run(host='0.0.0.0', port=5000)
