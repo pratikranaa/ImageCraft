@@ -16,6 +16,7 @@ This is a web application that allows users to upload images and perform various
 8. [Contributing](#8-contributing)
 9. [Conclusion](#9-conclusion)
 10. [Creator](#10-creator)
+11. [Demo Video](#11-demo-video)
 
 
 ## 1. Introduction
@@ -279,3 +280,8 @@ Contributions are welcome! If you find any issues or want to add new features, p
 This project was created by:
    - [Pratik Rana](https://github.com/pratikranaa)
 
+## 11. Demo Video
+
+You can see a demo of the application in the following video:
+
+[Imagecraft Demo Video](https://github.com/pratikranaa/ImageCraft/blob/master/demo.mp4)
