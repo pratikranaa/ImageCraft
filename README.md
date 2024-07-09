@@ -2,6 +2,8 @@
 
 This is a web application that allows users to upload images and perform various operations on them, such as object detection, image classification, image captioning, and annotated images. The application is built using Flask for the backend, React for the frontend, and Vite as the build tool. It also utilizes TailwindCSS for styling and is containerized using Docker for easy deployment.
 
+![Demo](https://raw.githubusercontent.com/pratikranaa/ImageCraft/master/demo%20(2).gif)
+
 ## Table of Contents
 
 1. [Introduction](#1-introduction)
